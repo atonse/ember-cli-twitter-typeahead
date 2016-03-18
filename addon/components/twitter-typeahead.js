@@ -112,7 +112,7 @@ export default Ember.TextField.extend({
   setSelectionValue() {
     const selection = this.get('selection');
     if (selection) {
-      this.$().typeahead('val', selection);
+      this.$().typeahead('val', get(selection, get(this, 'displayKey')));
     }
   },
 
