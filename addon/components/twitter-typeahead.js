@@ -82,7 +82,7 @@ export default Ember.TextField.extend({
     }).on('typeahead:selected typeahead:autocompleted', run.bind(this, (e, obj, dataSet) => {
       this.set('selection', obj);
 
-      let fieldValue = this.get('selection.'+this.get('displayKey'));
+      let fieldValue = obj;
       if (fieldValue) {
         this.sendAction('onSelectAction', fieldValue);
       }
@@ -112,7 +112,7 @@ export default Ember.TextField.extend({
   setSelectionValue() {
     const selection = this.get('selection');
     if (selection) {
-      this.$().typeahead('val', get(selection, this.get('displayKey')));
+      this.$().typeahead('val', selection);
     }
   },
 
